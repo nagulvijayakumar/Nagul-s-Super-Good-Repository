@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nagul's personal portfolio — VLSI, electronics, programming and projects.">
+  <title>Nagul | VLSI Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080b16;
+      --panel: #111629;
+      --text: #f2f4ff;
+      --muted: #a4aec7;
+      --purple: #a78bfa;
+      --cyan: #67e8f9;
+      --border: #272e47;
+    }
+
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 80% 5%, #28204c 0%, transparent 35%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, sans-serif;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container { width: min(1080px, 90%); margin: auto; }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: "Space Mono", monospace;
+      color: var(--cyan);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    nav .links { display: flex; flex-wrap: wrap; gap: 20px; }
+    nav .links a { color: var(--muted); font-size: .9rem; }
+    nav .links a:hover { color: var(--cyan); }
+
+    .hero {
+      min-height: 75vh;
+      display: grid;
+      grid-template-columns: 1.4fr .8fr;
+      align-items: center;
+      gap: 50px;
+      padding: 65px 0;
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      font-family: "Space Mono", monospace;
+      font-size: .85rem;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      margin: 18px 0;
+      font-size: clamp(2.8rem, 7vw, 5.4rem);
+      line-height: 1.05;
+      letter-spacing: -3px;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, var(--purple), var(--cyan));
+      color: transparent;
+      background-clip: text;
+    }
+
+    .intro { max-width: 610px; color: var(--muted); font-size: 1.05rem; }
+
+    .buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      font-weight: 600;
+      font-size: .92rem;
+    }
+
+    .btn.primary {
+      color: #090c18;
+      background: linear-gradient(90deg, var(--purple), var(--cyan));
+      border: none;
+    }
+
+    .chip-art {
+      border: 1px solid #51477b;
+      border-radius: 28px;
+      padding: 25px;
+      background: linear-gradient(145deg, #19172f, #101729);
+      box-shadow: 0 0 50px #8b5cf626;
+      text-align: center;
+    }
+
+    .chip-art svg { width: 100%; max-width: 280px; }
+
+    .photo {
+      display: block;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--purple);
+      margin: 0 auto 20px;
+      background: #25203f;
+    }
+
+    .photo-placeholder {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      border: 2px dashed var(--purple);
+      color: var(--cyan);
+      font-size: 2rem;
+    }
+
+    section { padding: 65px 0; }
+
+    .section-label {
+      color: var(--cyan);
+      font-family: "Space Mono", monospace;
+      font-size: .8rem;
+    }
+
+    h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 8px 0 25px; }
+
+    .section-intro { max-width: 700px; color: var(--muted); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 24px;
+      background: linear-gradient(145deg, #131a2e, #0e1221);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .card h3 { margin-top: 0; }
+    .card p, .card li { color: var(--muted); }
+    .icon { font-size: 1.8rem; }
+    .tag {
+      display: inline-block;
+      padding: 5px 10px;
+      margin: 4px 4px 0 0;
+      border: 1px solid #51477b;
+      border-radius: 20px;
+      color: #d6c8ff;
+      font-size: .8rem;
+    }
+
+    .timeline {
+      border-left: 2px solid #51477b;
+      padding-left: 22px;
+      margin-left: 8px;
+    }
+
+    .timeline-item { position: relative; margin-bottom: 28px; }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -29px;
+      top: 7px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 14px var(--cyan);
+    }
+
+    .muted { color: var(--muted); }
+
+    .meme {
+      display: block;
+      width: min(600px, 100%);
+      margin: 20px auto 0;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+
+    .contact-card { text-align: center; }
+
+    footer {
+      padding: 25px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .85rem;
+      text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      nav { align-items: flex-start; flex-direction: column; }
+      nav .links { gap: 12px; }
+      .hero { grid-template-columns: 1fr; min-height: auto; padding: 55px 0; }
+      .chip-art { max-width: 440px; }
+      .grid { grid-template-columns: 1fr; }
+      h1 { letter-spacing: -1.5px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="container">
+    <nav>
+      <a class="logo" href="#home">&lt;NAGUL /&gt;</a>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div>
+        <div class="eyebrow">VLSI STUDENT · FUTURE ENGINEER</div>
+        <h1>Hi, I'm <span>Nagul.</span></h1>
+        <p class="intro">
+          I'm a first-year B.E. VLSI student exploring electronics,
+          embedded systems, programming and the technology behind
+          the chips that power our world.
+        </p>
+        <div class="buttons">
+          <a class="btn primary" href="#projects">Explore my projects ↘</a>
+          <a class="btn" href="#contact">Connect with me</a>
+        </div>
+      </div>
+
+      <div class="chip-art">
+        <div class="photo-placeholder" id="photoFallback">N</div>
+        <img class="photo" id="profilePhoto" src="profile.jpg"
+             alt="Nagul's profile photo" hidden>
+        <svg viewBox="0 0 300 260" role="img" aria-label="Decorative microchip illustration">
+          <g stroke="#67e8f9" stroke-width="3" fill="none" opacity=".8">
+            <path d="M150 20V55 M150 205V240 M35 130H70 M230 130H265"/>
+            <path d="M70 85H45V55 M230 85H255V55 M70 175H45V205 M230 175H255V205"/>
+            <path d="M110 55V35 M190 55V35 M110 205V225 M190 205V225"/>
+          </g>
+          <rect x="70" y="55" width="160" height="150" rx="14"
+                fill="#171b37" stroke="#a78bfa" stroke-width="3"/>
+          <rect x="88" y="73" width="124" height="114" rx="8"
+                fill="#0c1125" stroke="#51477b" stroke-width="2"/>
+          <text x="150" y="120" fill="#67e8f9" text-anchor="middle"
+                font-size="17" font-family="monospace">VLSI</text>
+          <text x="150" y="147" fill="#c4b5fd" text-anchor="middle"
+                font-size="12" font-family="monospace">DESIGN</text>
+          <circle cx="150" cy="165" r="4" fill="#a78bfa"/>
+        </svg>
+        <p class="muted">Curious mind. Building step by step.</p>
+      </div>
+    </section>
+
+    <section class="container" id="about">
+      <div class="section-label">01 / ABOUT ME</div>
+      <h2>Learning how technology works.</h2>
+      <p class="section-intro">
+        I am beginning my journey in Very Large Scale Integration (VLSI)
+        and electronics. I enjoy learning by building small projects,
+        experimenting with hardware and improving my programming skills.
+        My goal is to grow through practical work and meaningful engineering projects.
+      </p>
+    </section>
+
+    <section class="container" id="skills">
+      <div class="section-label">02 / SKILLS</div>
+      <h2>Things I'm exploring.</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="icon">⌘</div>
+          <h3>Programming</h3>
+          <p>Building programming fundamentals and learning to write clearer code.</p>
+          <span class="tag">C Programming</span>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+        </article>
+        <article class="card">
+          <div class="icon">▦</div>
+          <h3>Electronics & Embedded Systems</h3>
+          <p>Exploring microcontrollers, sensors and hardware-software interaction.</p>
+          <span class="tag">Arduino</span>
+          <span class="tag">RFID</span>
+          <span class="tag">LCD</span>
+        </article>
+      </div>
+      <p class="muted">These are learning areas, not a claim of professional expertise.</p>
+    </section>
+
+    <section class="container" id="projects">
+      <div class="section-label">03 / PROJECTS</div>
+      <h2>Learning by building.</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="icon">📡</div>
+          <h3>Arduino RFID Attendance System</h3>
+          <p>
+            A student project using an Arduino Uno, an RC522 RFID reader
+            and a 16×2 I2C LCD to identify registered cards and display
+            attendance-related information.
+          </p>
+          <span class="tag">Arduino Uno</span>
+          <span class="tag">RC522 RFID</span>
+          <span class="tag">I2C LCD</span>
+          <p><strong>Status:</strong> Completed and presented as a college project.</p>
+        </article>
+        <article class="card">
+          <div class="icon">💻</div>
+          <h3>Personal Portfolio Website</h3>
+          <p>
+            This responsive portfolio is built with HTML and CSS and
+            published using GitHub Pages.
+          </p>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">GitHub Pages</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="education">
+      <div class="section-label">04 / EDUCATION</div>
+      <h2>My learning journey.</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>B.E. VLSI</h3>
+          <p class="muted">KPR Institute of Engineering and Technology (Autonomous)</p>
+          <p class="muted">First-year student</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="meme">
+      <div class="section-label">05 / DEVELOPER LIFE</div>
+      <h2>Every programmer knows this feeling.</h2>
+      <p class="section-intro">
+        One tiny change, ten minutes of debugging, and suddenly everything works.
+      </p>
+      <img class="meme" src="meme.svg" alt="Programming meme: the joy of getting your first website to work">
+    </section>
+
+    <section class="container" id="contact">
+      <div class="card contact-card">
+        <div class="section-label">06 / CONTACT</div>
+        <h2>Let's connect.</h2>
+        <p class="muted">I'm learning, building and looking forward to new opportunities.</p>
+        <div class="buttons" style="justify-content:center">
+          <a class="btn primary" href="https://github.com/" target="_blank" rel="noopener">Find me on GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+        <p class="muted">Replace these links with your personal profile URLs before submitting.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">Designed with curiosity and code · © <span id="year"></span> Nagul</div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const photo = document.getElementById("profilePhoto");
+    const fallback = document.getElementById("photoFallback");
+
+    photo.addEventListener("load", () => {
+      photo.hidden = false;
+      fallback.hidden = true;
+    });
+
+    photo.addEventListener("error", () => {
+      photo.hidden = true;
+      fallback.hidden = false;
+    });
+  </script>
+</body>
+</html>
